@@ -1,16 +1,20 @@
 package entity;
 
+import java.util.List;
+
 public class CommonUser implements User{
     private String userId;
     private String username;
     private String firstName;
     private String lastName;
+    private List<String> groups;
 
-    public CommonUser(String userId, String username, String firstName, String lastName) {
+    public CommonUser(String userId, String username, String firstName, String lastName, List<String> groups) {
         this.userId = userId;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.groups = groups;
     }
 
     @Override
@@ -31,5 +35,10 @@ public class CommonUser implements User{
     @Override
     public String getLastName() {
         return lastName;
+    }
+
+    @Override
+    public List<String> getGroups() {
+        return groups;
     }
 }
