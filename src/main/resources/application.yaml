@@ -4,11 +4,11 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5232/customer
-    username: postgres
-    password: Patuan1804
+    username: SplitBill
+    password: Password
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
