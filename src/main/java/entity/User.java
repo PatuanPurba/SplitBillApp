@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.List;
+
 public interface User {
     String getUserId();
 
@@ -8,4 +10,6 @@ public interface User {
     String getFirstName();
 
     String getLastName();
+
+    List<String> getGroups();
 }
