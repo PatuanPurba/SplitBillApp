@@ -1,16 +1,21 @@
 package entity;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+@Service
 public class CommonUserFactory implements UserFactory{
+
     @Override
-    public User create(String user_id, String first_name, String last_name, String username) {
-        return new CommonUser(user_id, first_name, last_name, username, new ArrayList<String>());
+    public CommonUser create(UUID user_id, String username, String password, String first_name, String last_name) {
+        return new CommonUser(user_id, username, password, first_name, last_name);
     }
 
     @Override
-    public User create(String user_id, String first_name, String last_name, String username, List<String> groups) {
-        return new CommonUser(user_id, first_name, last_name, username, groups);
+    public CommonUser create( String username, String password, String first_name, String last_name) {
+        return new CommonUser(null, username, password, first_name, last_name);
     }
 }

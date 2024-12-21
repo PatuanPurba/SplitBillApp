@@ -3,8 +3,8 @@ services:
     container_name: SplitBillApp
     image: postgres
     environment:
-      POSTGRES_USER: SplitBill
-      POSTGRES_PASSWORD: Password
+      POSTGRES_USER: patuan
+      POSTGRES_PASSWORD: patuan
       PGDATA: /data/postgres
     volumes:
       - db:/data/postgres

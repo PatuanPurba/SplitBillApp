@@ -1,24 +1,33 @@
 package entity;
 
-import java.util.List;
+import jakarta.persistence.*;
 
+import java.util.UUID;
+
+@Entity
+@Table(name = "users")
 public class CommonUser implements User{
-    private String userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID userId;
+
     private String username;
     private String firstName;
-    private String lastName;
-    private List<String> groups;
+    private String LastName;
+    private String password;
 
-    public CommonUser(String userId, String username, String firstName, String lastName, List<String> groups) {
+    public CommonUser(UUID userId, String username, String password, String firstName, String LastName) {
         this.userId = userId;
         this.username = username;
+        this.password = password;
         this.firstName = firstName;
-        this.lastName = lastName;
-        this.groups = groups;
+        this.LastName = LastName;
     }
 
-    @Override
-    public String getUserId() {
+    public CommonUser() {
+    }
+
+    public UUID getUserId() {
         return userId;
     }
 
@@ -27,18 +36,16 @@ public class CommonUser implements User{
         return username;
     }
 
-    @Override
     public String getFirstName() {
         return firstName;
     }
 
-    @Override
     public String getLastName() {
-        return lastName;
+        return LastName;
     }
 
     @Override
-    public List<String> getGroups() {
-        return groups;
+    public String getPassword() {
+        return password;
     }
 }

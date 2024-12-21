@@ -1,9 +1,10 @@
 package entity;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface User {
-    String getUserId();
+    UUID getUserId();
 
     String getUsername();
 
@@ -11,5 +12,5 @@ public interface User {
 
     String getLastName();
 
-    List<String> getGroups();
+    String getPassword();
 }
