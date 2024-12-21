@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5232/customer
-    username: SplitBill
-    password: Password
+    url: jdbc:postgresql://localhost:5232/splitbill
+    username: patuan
+    password: patuan
   jpa:
     hibernate:
       ddl-auto: update
