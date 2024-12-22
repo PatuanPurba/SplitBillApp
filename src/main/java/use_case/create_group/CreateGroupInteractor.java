@@ -1,7 +1,7 @@
 package use_case.create_group;
 
-import entity.CommonGroup;
-import entity.CommonUser;
+import entity.Group;
+import entity.User;
 import entity.UsersGroups;
 import entity.UsersGroupsId;
 import org.springframework.http.HttpStatus;
@@ -36,10 +36,10 @@ public class CreateGroupInteractor implements CreateGroupInputBoundary{
             }
 
             String username = inputData.getUsername();
-            CommonGroup group = new CommonGroup(inputData.getGroupName());
+            Group group = new Group(inputData.getGroupName());
 
-            CommonGroup new_group = groupRepository.save(group);
-            CommonUser new_user = userRepository.findByUsername(username);
+            Group new_group = groupRepository.save(group);
+            User new_user = userRepository.findByUsername(username);
             UUID userId = new_user.getUserId();
 
             // Add user and group into UsersGroups

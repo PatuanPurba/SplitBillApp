@@ -2,7 +2,7 @@ package use_case.logout;
 
 import data_transmission_object.UserDTO;
 import data_transmission_object.UserDTOMapper;
-import entity.CommonUser;
+import entity.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -36,7 +36,7 @@ public class LogOutInteractor implements LogOutInputBoundary{
             }
 
             String username = inputData.getUsername();
-            CommonUser commonUser = userRepository.findByUsername(username);
+            User commonUser = userRepository.findByUsername(username);
             UUID userId = commonUser.getUserId();
 
             userRepository.deleteById(userId);

@@ -1,12 +1,12 @@
 package use_case.login_user;
 
-import entity.CommonUser;
+import entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LoginUserDataAccessInterface extends JpaRepository<CommonUser, String> {
+public interface LoginUserDataAccessInterface extends JpaRepository<User, String> {
     boolean existsByUsername(String username);
 
-    CommonUser findByUsername(String username);
+    User findByUsername(String username);
 }

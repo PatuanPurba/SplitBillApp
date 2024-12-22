@@ -1,13 +1,11 @@
 package use_case.login_user;
 
-import entity.CommonUser;
+import entity.User;
 import entity.CommonUserFactory;
 import entity.Token;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.UUID;
 
 @Service
 public class LoginUserInteractor implements LoginUserInputBoundary{
@@ -34,7 +32,7 @@ public class LoginUserInteractor implements LoginUserInputBoundary{
                 throw new Exception("Username not Exists");
             }
 
-            CommonUser tempUser = dataAccessUser.findByUsername(username);
+            User tempUser = dataAccessUser.findByUsername(username);
 
             if (!tempUser.getPassword().equals(password)) {
                 throw new Exception("Wrong Password");

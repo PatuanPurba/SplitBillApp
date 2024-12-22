@@ -1,16 +1,65 @@
 package entity;
 
-import java.util.List;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
-public interface User {
-    UUID getUserId();
+@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID userId;
 
-    String getUsername();
+    private String username;
+    private String firstName;
+    private String LastName;
+    private String password;
 
-    String getFirstName();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UsersGroups> relationship = new HashSet<>();
 
-    String getLastName();
+    public User(UUID userId, String username, String password, String firstName, String LastName) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.LastName = LastName;
+    }
 
-    String getPassword();
+    public User(UUID userId, String username, String password, String firstName, String LastName, Set<UsersGroups> relationship) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.LastName = LastName;
+        this.relationship = relationship;
+    }
+
+    public User() {
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Set<UsersGroups> getRelationship() {return relationship;}
 }

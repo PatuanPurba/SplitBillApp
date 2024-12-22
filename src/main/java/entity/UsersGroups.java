@@ -2,8 +2,6 @@ package entity;
 
 import jakarta.persistence.*;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "users_groups")
 public class UsersGroups {
@@ -13,12 +11,12 @@ public class UsersGroups {
     @ManyToOne
     @MapsId ("userId")
     @JoinColumn(name = "user_id")
-    CommonUser user;
+    User user;
 
     @ManyToOne
     @MapsId ("groupId")
     @JoinColumn(name = "group_id")
-    CommonGroup group;
+    Group group;
 
     public UsersGroups(UsersGroupsId id) {
         this.id = id;
@@ -28,9 +26,9 @@ public class UsersGroups {
 
     public UsersGroupsId getId() {return id;}
 
-    public void setUser(CommonUser user) {this.user = user;}
+    public void setUser(User user) {this.user = user;}
 
-    public void setGroup(CommonGroup group) {this.group = group;}
+    public void setGroup(Group group) {this.group = group;}
 
-    public CommonGroup getGroup() {return group;}
+    public Group getGroup() {return group;}
 }

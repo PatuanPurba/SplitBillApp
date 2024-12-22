@@ -1,17 +1,13 @@
 package use_case.create_user;
 
-import entity.CommonUser;
+import entity.User;
 import entity.CommonUserFactory;
 import jakarta.transaction.Transactional;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CreateUserInteractor implements CreateUserInputBoundary{
@@ -43,9 +39,9 @@ public class CreateUserInteractor implements CreateUserInputBoundary{
             String password = request.getPassword();
             String username = request.getUsername();
 
-            CommonUser user = userFactory.create(username, password, first_name, last_name);
+            User user = userFactory.create(username, password, first_name, last_name);
 
-            CommonUser new_user = DataAccess.save(user);
+            User new_user = DataAccess.save(user);
 
 
 

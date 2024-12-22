@@ -1,9 +1,7 @@
 package interface_adapter.user;
 
 import data_transmission_object.UserDTO;
-import entity.CommonUser;
 import entity.User;
-import jakarta.persistence.criteria.CommonAbstractCriteria;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +29,6 @@ public class LogOutController {
         return use_case.execute(inputData);
     }
 
-    record LogOutRequest(CommonUser user, UUID token){}
+    record LogOutRequest(User user, UUID token){}
 
 }

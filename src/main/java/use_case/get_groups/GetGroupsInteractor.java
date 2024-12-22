@@ -1,7 +1,7 @@
 package use_case.get_groups;
 
 import data_transmission_object.GroupDTO;
-import entity.CommonUser;
+import entity.User;
 import entity.UsersGroups;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,7 @@ public class GetGroupsInteractor implements GetGroupsInputBoundary{
             String username = inputData.getUsername();
             List<GroupDTO> result = new ArrayList<>();
 
-            CommonUser user = userRepository.findByUsername(username);
+            User user = userRepository.findByUsername(username);
             for (UsersGroups relation: user.getRelationship()){
                result.add(new GroupDTO(relation.getGroup().getGroupName()));
             }
