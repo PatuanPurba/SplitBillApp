@@ -35,11 +35,12 @@ public class CreateGroupInteractor implements CreateGroupInputBoundary{
                 throw new Exception("Invalid Token");
             }
 
-            UUID userId = inputData.getUserId();
+            String username = inputData.getUsername();
             CommonGroup group = new CommonGroup(inputData.getGroupName());
 
             CommonGroup new_group = groupRepository.save(group);
-            CommonUser new_user = userRepository.findById(userId).orElse(null);
+            CommonUser new_user = userRepository.findByUsername(username);
+            UUID userId = new_user.getUserId();
 
             // Add user and group into UsersGroups
             UsersGroups usersGroups = new UsersGroups(new UsersGroupsId(userId, new_group.getGroupId()));
@@ -48,7 +49,7 @@ public class CreateGroupInteractor implements CreateGroupInputBoundary{
 
             new_group.getRelationship().add(usersGroups);
             groupRepository.save(new_group);
-            return new CreateGroupOutputData(new_group.getGroupId());
+            return new CreateGroupOutputData(new_group.getGroupName());
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

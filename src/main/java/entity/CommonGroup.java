@@ -26,7 +26,11 @@ public class CommonGroup implements Group{
 
     public UUID getGroupId() {return groupId;}
 
+    public String getGroupName() {return groupName;}
+
+
     public Set<UsersGroups> getRelationship() {return relationship;}
+
 
     public void addRelationship(UsersGroups relationship) {this.relationship.add(relationship);}
 }

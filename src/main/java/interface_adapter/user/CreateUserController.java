@@ -1,12 +1,13 @@
 package interface_adapter.user;
 
-import data_transmission_object.UserRequestDTO;
-import data_transmission_object.UserResponseDTO;
+import data_transmission_object.UserDTO;
 import interface_adapter.BaseController;
 import org.springframework.boot.SpringApplication;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import use_case.create_user.CreateUserInputBoundary;
@@ -17,7 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/create")
-public class CreateUserController extends BaseController<UserRequestDTO, UserResponseDTO> {
+public class CreateUserController{
 
     private final CreateUserInputBoundary use_case;
 
@@ -26,18 +27,18 @@ public class CreateUserController extends BaseController<UserRequestDTO, UserRes
     }
 
     @PostMapping
-    @Override
-    public ResponseEntity<UserResponseDTO> executeImpl(UserRequestDTO request) {
-        CreateUserInputData inputData = new CreateUserInputData(request.getFirstName(), request.getLastName(), request.getUsername(), request.getPassword());
-        CreateUserOutputData responseInteractor = use_case.execute(inputData);
+    public ResponseEntity<UserDTO> executeImpl(@RequestBody SignUpRequest request) {
+        String firstName = request.firstName();
+        String lastName = request.lastName();
+        String username = request.username();
+        String password = request.password();
 
-        UUID id = responseInteractor.getUser_id();
-        String first_name = responseInteractor.getFirst_name();
-        String last_name = responseInteractor.getLast_name();
-        String username = responseInteractor.getUsername();
+        CreateUserInputData inputData = new CreateUserInputData(firstName, lastName, username, password);
+        use_case.execute(inputData);
 
-        UserResponseDTO response = new UserResponseDTO(id, username, first_name, last_name, null);
+        UserDTO response = new UserDTO(username, firstName, lastName);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    public record SignUpRequest(String firstName, String lastName, String username, String password) {}
 }

@@ -31,4 +31,6 @@ public class UsersGroups {
     public void setUser(CommonUser user) {this.user = user;}
 
     public void setGroup(CommonGroup group) {this.group = group;}
+
+    public CommonGroup getGroup() {return group;}
 }

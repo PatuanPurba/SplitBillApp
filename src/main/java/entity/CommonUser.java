@@ -2,6 +2,7 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,7 +19,7 @@ public class CommonUser implements User{
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<UsersGroups> relationship;
+    private Set<UsersGroups> relationship = new HashSet<>();
 
     public CommonUser(UUID userId, String username, String password, String firstName, String LastName) {
         this.userId = userId;
@@ -26,6 +27,15 @@ public class CommonUser implements User{
         this.password = password;
         this.firstName = firstName;
         this.LastName = LastName;
+    }
+
+    public CommonUser(UUID userId, String username, String password, String firstName, String LastName, Set<UsersGroups> relationship) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.LastName = LastName;
+        this.relationship = relationship;
     }
 
     public CommonUser() {
@@ -52,4 +62,6 @@ public class CommonUser implements User{
     public String getPassword() {
         return password;
     }
+
+    public Set<UsersGroups> getRelationship() {return relationship;}
 }

@@ -3,11 +3,11 @@ package use_case.create_group;
 import java.util.UUID;
 
 public class CreateGroupOutputData {
-    private UUID groupId;
+    private String groupName;
 
-    public CreateGroupOutputData(UUID groupId) {
-        this.groupId = groupId;
+    public CreateGroupOutputData(String groupName) {
+        this.groupName = groupName;
     }
 
-    public UUID getGroupId() {return groupId;}
+    public String getGroupId() {return groupName;}
 }
