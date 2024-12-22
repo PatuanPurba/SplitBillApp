@@ -18,7 +18,7 @@ public class CommonUser implements User{
     private String LastName;
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UsersGroups> relationship = new HashSet<>();
 
     public CommonUser(UUID userId, String username, String password, String firstName, String LastName) {
