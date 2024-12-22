@@ -36,7 +36,7 @@ public class CreateUserController extends BaseController<UserRequestDTO, UserRes
         String last_name = responseInteractor.getLast_name();
         String username = responseInteractor.getUsername();
 
-        UserResponseDTO response = new UserResponseDTO(id, username, first_name, last_name);
+        UserResponseDTO response = new UserResponseDTO(id, username, first_name, last_name, null);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

@@ -1,13 +1,16 @@
 package data_transmission_object;
 
+import java.util.UUID;
+
 public class UserRequestDTO {
     private String id;
     private String username;
     private String firstName;
     private String lastName;
     private String password;
+    private UUID token;
 
-    public UserRequestDTO(String id, String username, String firstName, String lastName, String password) {
+    public UserRequestDTO(String id, String username, String firstName, String lastName, String password, UUID token) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -51,9 +54,5 @@ public class UserRequestDTO {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

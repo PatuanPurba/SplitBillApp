@@ -7,12 +7,14 @@ public class UserResponseDTO {
     private String username;
     private String firstName;
     private String lastName;
+    private UUID token;
 
-    public UserResponseDTO(UUID id, String username, String firstName, String lastName) {
+    public UserResponseDTO(UUID id, String username, String firstName, String lastName, UUID token) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.token = token;
     }
 
     public UserResponseDTO(){}
@@ -47,5 +49,13 @@ public class UserResponseDTO {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public UUID getToken() {
+        return token;
+    }
+
+    public void setToken(UUID token) {
+        this.token = token;
     }
 }

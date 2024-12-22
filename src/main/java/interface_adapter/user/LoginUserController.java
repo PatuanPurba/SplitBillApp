@@ -37,7 +37,9 @@ public class LoginUserController extends BaseController<UserRequestDTO, UserResp
         String first_name = responseInteractor.getUser().getFirstName();
         String last_name = responseInteractor.getUser().getLastName();
 
-        UserResponseDTO response = new UserResponseDTO(id, username, first_name, last_name);
+        UUID token = responseInteractor.getToken();
+
+        UserResponseDTO response = new UserResponseDTO(id, username, first_name, last_name, token);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

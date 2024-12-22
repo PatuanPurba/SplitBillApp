@@ -2,6 +2,7 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -15,6 +16,9 @@ public class CommonUser implements User{
     private String firstName;
     private String LastName;
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<UsersGroups> relationship;
 
     public CommonUser(UUID userId, String username, String password, String firstName, String LastName) {
         this.userId = userId;
