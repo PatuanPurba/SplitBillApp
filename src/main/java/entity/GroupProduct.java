@@ -2,6 +2,8 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -20,6 +22,9 @@ public class GroupProduct {
     @ManyToOne
     @JoinColumn(name = "product_id")
     Product product;
+
+    @OneToMany(mappedBy = "groupProduct")
+    Set<UserProduct> userProducts = new HashSet<UserProduct>();
 
     public GroupProduct(Group group, Product product, int quantity) {
         this.group = group;
@@ -45,4 +50,8 @@ public class GroupProduct {
     public Product getProduct() {
         return product;
     }
+
+    public Set<UserProduct> getUserProducts() {return userProducts;}
+
+    public void setQuantity(int quantity){this.quantity = quantity;}
 }

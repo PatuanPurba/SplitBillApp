@@ -1,7 +1,6 @@
 package use_case.create_user;
 
 import entity.User;
-import entity.CommonUserFactory;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -12,20 +11,16 @@ import java.sql.SQLException;
 @Service
 public class CreateUserInteractor implements CreateUserInputBoundary{
     private final CreateUserDataAccessInterface DataAccess;
-    private final CommonUserFactory userFactory;
 
 
 
-    public CreateUserInteractor(CreateUserDataAccessInterface dataAccess, CommonUserFactory userFactory) {
+    public CreateUserInteractor(CreateUserDataAccessInterface dataAccess) {
         DataAccess = dataAccess;
-        this.userFactory = userFactory;
     }
 
     @Transactional
     public CreateUserOutputData execute(CreateUserInputData request){
         try{
-            System.out.println("Username: " + request.getUsername());
-
             if (DataAccess.existsByUsername(request.getUsername())){
 //                CreateUserOutputData response = new CreateUserOutputData();
 //                response.setErrorMessage("Username already exists");
@@ -39,7 +34,7 @@ public class CreateUserInteractor implements CreateUserInputBoundary{
             String password = request.getPassword();
             String username = request.getUsername();
 
-            User user = userFactory.create(username, password, first_name, last_name);
+            User user = new User(null, username, password, first_name, last_name);
 
             User new_user = DataAccess.save(user);
 

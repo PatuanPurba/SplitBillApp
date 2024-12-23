@@ -1,7 +1,6 @@
 package use_case.login_user;
 
 import entity.User;
-import entity.CommonUserFactory;
 import entity.Token;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -10,13 +9,11 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class LoginUserInteractor implements LoginUserInputBoundary{
 
-    private final CommonUserFactory userFactory;
     private final LoginUserDataAccessInterface dataAccessUser;
     private final LoginTokenDataAccessInterface dataAccessToken;
 
 
-    public LoginUserInteractor(CommonUserFactory userFactory, LoginUserDataAccessInterface dataAccessUser, LoginTokenDataAccessInterface dataAccessToken) {
-        this.userFactory = userFactory;
+    public LoginUserInteractor(LoginUserDataAccessInterface dataAccessUser, LoginTokenDataAccessInterface dataAccessToken) {
         this.dataAccessUser = dataAccessUser;
         this.dataAccessToken = dataAccessToken;
     }

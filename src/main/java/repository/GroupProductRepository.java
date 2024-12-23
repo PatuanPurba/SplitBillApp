@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface GroupProductRepository extends JpaRepository<GroupProduct, UUID> {
+    GroupProduct findByProduct_ProductIdAndGroup_GroupId(UUID productId, UUID groupId);
 }

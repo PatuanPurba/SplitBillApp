@@ -21,6 +21,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UsersGroups> relationship = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UserProduct> products = new HashSet<>();
+
     public User(UUID userId, String username, String password, String firstName, String LastName) {
         this.userId = userId;
         this.username = username;
@@ -62,4 +65,8 @@ public class User {
     }
 
     public Set<UsersGroups> getRelationship() {return relationship;}
+
+    public Set<UserProduct> getProducts() {
+        return products;
+    }
 }
