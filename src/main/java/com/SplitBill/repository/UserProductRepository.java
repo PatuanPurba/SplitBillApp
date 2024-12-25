@@ -18,4 +18,6 @@ public interface UserProductRepository extends JpaRepository<UserProduct, UUID> 
             "JOIN Product product ON gp.product.productId = product.productId " +
             "WHERE up.user.userId = :userId AND gp.group.groupId = :groupId")
     List<BillingDTO> findBillingDTOByUserIdAndGroupId(@Param("userId") UUID userId, @Param("groupId") UUID groupId);
+
+    void deleteAllByUser_UserId(UUID userId);
 }
