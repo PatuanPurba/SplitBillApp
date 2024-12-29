@@ -1,5 +1,6 @@
 package com.SplitBill.api;
 
+import com.SplitBill.data_transmission_object.UserDTO;
 import com.SplitBill.data_transmission_object.create_group.CreateGroupRequestDTO;
 import com.SplitBill.data_transmission_object.create_group.CreateGroupResponseDTO;
 import com.SplitBill.data_transmission_object.GroupDTO;
@@ -24,6 +25,12 @@ public class GroupController {
     @RequestMapping("/create")
     public CreateGroupResponseDTO createGroup(CreateGroupRequestDTO request){
         return createGroupService.execute(request);
+    }
+
+    @GetMapping
+    @RequestMapping("/groupId={id}")
+    public List<UserDTO> getMembers(@PathVariable UUID id){
+        return 
     }
 
     @GetMapping

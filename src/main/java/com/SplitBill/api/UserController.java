@@ -19,14 +19,15 @@ public class UserController {
         this.logInUserService = logInUserService;
     }
 
-    @PostMapping
+    @RequestMapping(method = RequestMethod.POST)
     public RegisterUserResponseDTO registerUser(@RequestBody RegisterUserRequestDTO request) {
         return registerUserService.execute(request);
     }
 
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET)
     public LogInUserResponseDTO logInUser(@RequestBody LogInUserRequestDTO request) {
-        return logInUserService.execute(request);
+        LogInUserResponseDTO result = logInUserService.execute(request);
+        return result;
     }
 
 

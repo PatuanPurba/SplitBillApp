@@ -6,6 +6,7 @@ import com.SplitBill.domain.User;
 import com.SplitBill.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 @Service
 public class RegisterUserService implements RegisterUserServiceInterface {
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
 
     public RegisterUserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -27,7 +29,8 @@ public class RegisterUserService implements RegisterUserServiceInterface {
             }
             String first_name = request.firstName();
             String last_name = request.lastName();
-            String password = request.password();
+            System.out.println("Password: " + request.password());
+            String password = bCryptPasswordEncoder.encode(request.password());
             String username = request.username();
 
             User user = new User(null, username, password, first_name, last_name);

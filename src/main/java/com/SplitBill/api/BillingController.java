@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/user/user_product")
+@RequestMapping("/api/v1/user_product")
 public class BillingController {
     @Autowired
     private GetBillingUserServiceInterface getBillingService;
