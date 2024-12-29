@@ -22,6 +22,7 @@ public class Group{
     Set<GroupProduct> products = new HashSet<>();
 
     public Group(String groupName) {
+        this.groupId = null;
         this.groupName = groupName;
     }
 

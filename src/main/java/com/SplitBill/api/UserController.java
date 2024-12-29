@@ -32,14 +32,13 @@ public class UserController {
         return registerUserService.execute(request);
     }
 
-    @RequestMapping(value= "username={username}", method = RequestMethod.GET)
-    public LogInUserResponseDTO logInUser(@PathVariable String username, @RequestBody String password) {
-        LogInUserRequestDTO request = new LogInUserRequestDTO(username, password);
+    @RequestMapping(method = RequestMethod.GET)
+    public LogInUserResponseDTO logInUser(@RequestBody LogInUserRequestDTO request) {
         LogInUserResponseDTO result = logInUserService.execute(request);
         return result;
     }
 
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(value="/getUsers", method=RequestMethod.GET)
     public List<UserDTO> getUsers(@RequestBody List<UUID> userIds){
         return userService.getUsers(userIds);
     }

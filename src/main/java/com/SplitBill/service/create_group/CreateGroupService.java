@@ -35,6 +35,8 @@ public class CreateGroupService implements CreateGroupServiceInterface {
             UUID userId = inputData.userId();
             Group group = new Group(inputData.groupName());
 
+            System.out.println("GroupName: " + group.getGroupName() + " " + inputData.groupName());
+
             Group new_group = groupRepository.save(group);
             User new_user = userRepository.findById(userId).orElse(null);
             if (new_user == null) {throw new Exception("User Id Not Exist on Database");}
