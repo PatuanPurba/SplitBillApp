@@ -1,4 +1,4 @@
-package com.SplitBill.service.product;
+package com.SplitBill.service.general_service.product;
 
 import com.SplitBill.data_transmission_object.ProductDTO;
 import com.SplitBill.data_transmission_object.mapper.ProductDTOMapper;

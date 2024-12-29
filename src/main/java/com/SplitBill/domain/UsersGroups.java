@@ -31,4 +31,6 @@ public class UsersGroups {
     public void setGroup(Group group) {this.group = group;}
 
     public Group getGroup() {return group;}
+
+    public User getUser() {return user;}
 }

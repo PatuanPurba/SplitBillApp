@@ -1,13 +1,10 @@
 package com.SplitBill.service.get_products_group;
 
-import com.SplitBill.data_transmission_object.ProductDTO;
 import com.SplitBill.data_transmission_object.StockDTO;
 import com.SplitBill.data_transmission_object.mapper.ProductDTOMapper;
-import com.SplitBill.domain.Group;
 import com.SplitBill.domain.GroupProduct;
-import com.SplitBill.domain.Product;
 import com.SplitBill.repository.GroupProductRepository;
-import com.SplitBill.service.product.ProductService;
+import com.SplitBill.service.general_service.product.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

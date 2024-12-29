@@ -5,7 +5,9 @@ import com.SplitBill.data_transmission_object.create_group.CreateGroupRequestDTO
 import com.SplitBill.data_transmission_object.create_group.CreateGroupResponseDTO;
 import com.SplitBill.data_transmission_object.GroupDTO;
 import com.SplitBill.service.create_group.CreateGroupServiceInterface;
+import com.SplitBill.service.general_service.user.UserService;
 import com.SplitBill.service.get_groups.GetGroupsServiceInterface;
+import com.SplitBill.service.get_members.GetMembersServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +17,16 @@ import java.util.UUID;
 @RestController
 @RequestMapping("api/v1/group")
 public class GroupController {
-    @Autowired
-    private CreateGroupServiceInterface createGroupService;
+    private final CreateGroupServiceInterface createGroupService;
+    private final GetGroupsServiceInterface getGroupsService;
+    private final GetMembersServiceInterface getMembersService;
 
-    @Autowired
-    private GetGroupsServiceInterface getGroupsService;
+    public GroupController(CreateGroupServiceInterface createGroupService, GetGroupsServiceInterface getGroupsService, GetMembersServiceInterface getMembersService) {
+        this.createGroupService = createGroupService;
+        this.getGroupsService = getGroupsService;
+        this.getMembersService = getMembersService;
+    }
+
 
     @PostMapping
     @RequestMapping("/create")
@@ -27,14 +34,12 @@ public class GroupController {
         return createGroupService.execute(request);
     }
 
-    @GetMapping
-    @RequestMapping("/groupId={id}")
-    public List<UserDTO> getMembers(@PathVariable UUID id){
-        return 
+    @RequestMapping(value="/groupId={id}", method = RequestMethod.GET)
+    public List<UUID> getMembers(@PathVariable UUID id){
+        return getMembersService.execute(id);
     }
 
-    @GetMapping
-    @RequestMapping("/userId={id}")
+    @RequestMapping(value = "/userId={id}", method = RequestMethod.GET)
     public List<GroupDTO> getGroups(@PathVariable String id){
         return getGroupsService.execute(UUID.fromString(id));
     }

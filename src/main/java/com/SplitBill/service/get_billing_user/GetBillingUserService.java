@@ -2,19 +2,11 @@ package com.SplitBill.service.get_billing_user;
 
 import com.SplitBill.data_transmission_object.BillingDTO;
 import com.SplitBill.data_transmission_object.GetBillingDTO;
-import com.SplitBill.data_transmission_object.ProductDTO;
 import com.SplitBill.data_transmission_object.mapper.ProductDTOMapper;
-import com.SplitBill.domain.GroupProduct;
-import com.SplitBill.domain.Product;
-import com.SplitBill.domain.UserProduct;
-import com.SplitBill.repository.GroupProductRepository;
 import com.SplitBill.repository.ProductRepository;
 import com.SplitBill.repository.UserProductRepository;
-import com.SplitBill.service.product.ProductService;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 

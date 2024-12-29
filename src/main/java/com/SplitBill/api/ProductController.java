@@ -4,7 +4,7 @@ import com.SplitBill.data_transmission_object.ProductDTO;
 import com.SplitBill.data_transmission_object.mapper.ProductDTOMapper;
 import com.SplitBill.domain.Product;
 import com.SplitBill.service.add_product_group.AddProductGroupInputBoundary;
-import com.SplitBill.service.product.ProductService;
+import com.SplitBill.service.general_service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
